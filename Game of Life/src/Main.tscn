@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/Main.gd" type="Script" id=1]
+[ext_resource path="res://src/Cell.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/icon/poweroff.png" type="Texture" id=3]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+cell_scene = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = 896.0
+margin_right = 1024.0
+margin_bottom = 128.0
+
+[node name="Button" type="Button" parent="Control"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 84.0
+margin_bottom = 84.0
+icon = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
